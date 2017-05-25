@@ -131,6 +131,7 @@ function clearInput(){
 
   $('#data-tables').hide()
 
+  $('#clear').empty().remove()
   $('#title').val('')
   $('#textarea1').val('')
 
@@ -138,9 +139,9 @@ function clearInput(){
   $("#languageData td").remove();
   $("#social-data td").remove();
 
-  $("#emotionChartYo").empty().remove()
-  $("#languageChart").empty().remove()
-  $("#socialChart").empty().remove()
+  $("#emotionChartYo").empty()
+  $("#languageChart").empty()
+  $("#socialChart").empty()
 
 }
 
