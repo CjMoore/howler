@@ -129,6 +129,8 @@ var printStuff = function(data){
 
 function clearInput(){
 
+  $('#save').remove()
+  $('#clear').remove()
   $('#data-tables').hide()
 
   $('#clear').empty().remove()
@@ -175,23 +177,43 @@ function saveHowler(data) {
 
 var postData = function(){
   var input = $("textarea[name=text]").val();
+  var title = $('#title').val()
+  $('#clear').remove()
+  $('#save').remove()
 
   var saveButton = `<button id='save' class = 'btn'>Save</button>`
   var clearButton = `<button id='clear' class = 'btn'>Clear</button>`
 
-  $('#save-btn').append(saveButton)
-  $('#clear-input').append(clearButton)
 
-  return $.ajax({
-    url: API + '/tones',
-    method: "GET",
-    data: {text: input}
-  })
+  if (input =='' && title =='') {
+    const error = "Please input a title and text to be analyzed"
+    $('.error').empty()
+    $('.error').append(error)
+  }
+  else if (input == '') {
+    const error = "Please input text to be analyzed"
+    $('.error').empty()
+    $('.error').append(error)
+  } else if(title == '') {
+    const error = "Please input a title"
+    $('.error').empty()
+    $('.error').append(error)
+  } else {
+    $('.error').empty()
+    $('#save-btn').append(saveButton)
+    $('#clear-input').append(clearButton)
+    return $.ajax({
+      url: API + '/tones',
+      method: "GET",
+      data: {text: input}
+    })
 
-  .done(printStuff)
-  .fail(function(error){
-    console.error(error)
-  });
+    .done(printStuff)
+    .fail(function(error){
+      console.error(error)
+    });
+  }
+
 }
 
 $(document).ready(function(){
