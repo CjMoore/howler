@@ -6,21 +6,39 @@ var printStuff = function(data){
   $("#languageData td").remove();
   $("#social-data td").remove();
 
-  $("#emotionalData tbody").append("<tr>").append("<td>Anger</td><td>"+ data[0]["Emotion Tone"]["Anger"] +"</td>")
-  $("#emotionalData tbody").append("<tr>").append("<td>Disgust</td><td>"+ data[0]["Emotion Tone"]["Disgust"] +"</td>")
-  $("#emotionalData tbody").append("<tr>").append("<td>Fear</td><td>"+ data[0]["Emotion Tone"]["Fear"] +"</td>")
-  $("#emotionalData tbody").append("<tr>").append("<td>Joy</td><td>"+ data[0]["Emotion Tone"]["Joy"] +"</td>")
-  $("#emotionalData tbody").append("<tr>").append("<td>Sadness</td><td>"+ data[0]["Emotion Tone"]["Sadness"] +"</td>")
+  var anger = ((data[0]["Emotion Tone"]["Anger"])* 100).toFixed(2)
+  var disgust = ((data[0]["Emotion Tone"]["Disgust"])* 100).toFixed(2)
+  var fear = ((data[0]["Emotion Tone"]["Fear"])* 100).toFixed(2)
+  var joy = ((data[0]["Emotion Tone"]["Joy"])* 100).toFixed(2)
+  var sadness = ((data[0]["Emotion Tone"]["Sadness"])* 100).toFixed(2)
 
-  $("#languageData tbody").append("<tr>").append("<td>Analytical</td><td>"+ data[1]["Language Tone"]["Analytical"] +"</td>")
-  $("#languageData tbody").append("<tr>").append("<td>Confident</td><td>"+ data[1]["Language Tone"]["Confident"] +"</td>")
-  $("#languageData tbody").append("<tr>").append("<td>Tentative</td><td>"+ data[1]["Language Tone"]["Tentative"] +"</td>")
+  var analytical = (data[1]["Language Tone"]["Analytical"]* 100).toFixed(2)
+  var confident = (data[1]["Language Tone"]["Confident"]* 100).toFixed(2)
+  var tentative = (data[1]["Language Tone"]["Tentative"]* 100).toFixed(2)
 
-  $("#social-data tbody").append("<tr>").append("<td>Openness</td><td>"+ data[2]["Social Tone"]["Openness"] +"</td>")
-  $("#social-data tbody").append("<tr>").append("<td>Conscientiousness</td><td>"+ data[2]["Social Tone"]["Conscientiousness"] +"</td>")
-  $("#social-data tbody").append("<tr>").append("<td>Extraversion</td><td>"+ data[2]["Social Tone"]["Extraversion"] +"</td>")
-  $("#social-data tbody").append("<tr>").append("<td>Agreeableness</td><td>"+ data[2]["Social Tone"]["Agreeableness"] +"</td>")
-  $("#social-data tbody").append("<tr>").append("<td>Emotional Range</td><td>"+ data[2]["Social Tone"]["Emotional Range"] +"</td>")
+
+  var openness = ((data[2]["Social Tone"]["Openness"])* 100).toFixed(2)
+  var conscientiousness = ((data[2]["Social Tone"]["Conscientiousness"])* 100).toFixed(2)
+  var extraversion = ((data[2]["Social Tone"]["Extraversion"])* 100).toFixed(2)
+  var agreeableness = ((data[2]["Social Tone"]["Agreeableness"])* 100).toFixed(2)
+  var emotionalRange = ((data[2]["Social Tone"]["Emotional Range"])* 100).toFixed(2)
+
+  $("#emotionalData tbody").append("<tr>").append("<td>Anger</td><td>"+ anger +"%</td>")
+  $("#emotionalData tbody").append("<tr>").append("<td>Disgust</td><td>"+ disgust+"%</td>")
+  $("#emotionalData tbody").append("<tr>").append("<td>Fear</td><td>"+ fear +"%</td>")
+  $("#emotionalData tbody").append("<tr>").append("<td>Joy</td><td>"+ joy +"%</td>")
+  $("#emotionalData tbody").append("<tr>").append("<td>Sadness</td><td>"+ sadness +"%</td>")
+
+  $("#languageData tbody").append("<tr>").append("<td>Analytical</td><td>"+ analytical +"%</td>")
+  $("#languageData tbody").append("<tr>").append("<td>Confident</td><td>"+ confident +"%</td>")
+  $("#languageData tbody").append("<tr>").append("<td>Tentative</td><td>"+ tentative +"%</td>")
+
+  $("#social-data tbody").append("<tr>").append("<td>Openness</td><td>"+ openness +"%</td>")
+  $("#social-data tbody").append("<tr>").append("<td>Conscientiousness</td><td>"+ conscientiousness +"%</td>")
+  $("#social-data tbody").append("<tr>").append("<td>Extraversion</td><td>"+ extraversion +"%</td>")
+  $("#social-data tbody").append("<tr>").append("<td>Agreeableness</td><td>"+ agreeableness +"%</td>")
+  $("#social-data tbody").append("<tr>").append("<td>Emotional Range</td><td>"+ emotionalRange +"%</td>")
+
 
   var doEmotionChart = $(function () {
     var myChart = Highcharts.chart('emotionChartYo', {
@@ -104,7 +122,7 @@ var postData = function(){
   var input = $("textarea[name=text]").val();
 
   return $.ajax({
-    url: PAPI + '/tones',
+    url: API + '/tones',
     method: "GET",
     data: {text: input}
   })
