@@ -19,5 +19,7 @@ class CreateHowlers < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_reference :howlers, :user, index: true
   end
 end

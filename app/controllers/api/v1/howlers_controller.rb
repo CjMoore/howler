@@ -2,8 +2,7 @@ class Api::V1::HowlersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    @howler = Howler.new(howler_params)
-    byebug
+    @howler = current_user.howlers.new(howler_params)
     if @howler.save
       flash[:notice] = 'Howler successfully saved'
       # render status: 302

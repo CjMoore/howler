@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  has_many :howlers
+
   def self.find_or_create_from_auth(auth)
    user = User.find_or_create_by(uid:auth["uid"])
    user.uid             = auth["uid"]
