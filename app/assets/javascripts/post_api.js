@@ -105,7 +105,32 @@ var printStuff = function(data){
 }
 
 function saveHowler(data) {
-  
+  // need to add title after JA PR merged
+  var howlerData = {howler: {text: $('#textarea1').val(),
+                             anger: data[0]["Emotion Tone"]["Anger"],
+                             disgust: data[0]["Emotion Tone"]["Disgust"],
+                             fear: data[0]["Emotion Tone"]["Fear"],
+                             joy: data[0]["Emotion Tone"]["Joy"],
+                             sadness: data[0]["Emotion Tone"]["Sadness"],
+                             analytical: data[1]["Language Tone"]["Analytical"],
+                             confident: data[1]["Language Tone"]["Confident"],
+                             tentative: data[1]["Language Tone"]["Tentative"],
+                             openness: data[2]["Social Tone"]["Openness"],
+                             conscientiousness: data[2]["Social Tone"]["Conscientiousness"],
+                             extraversion: data[2]["Social Tone"]["Extraversion"],
+                             agreeableness: data[2]["Social Tone"]["Agreeableness"],
+                             emotional_range: data[2]["Social Tone"]["Emotional Range"]
+                           }}
+
+  debugger
+  $.ajax({
+    url: API + '/howler',
+    method: "POST",
+    data: howlerData
+  })
+  .fail(function(error){
+    console.error(error)
+  });
 }
 
 var postData = function(){
