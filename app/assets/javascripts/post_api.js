@@ -122,9 +122,8 @@ function saveHowler(data) {
                              emotional_range: data[2]["Social Tone"]["Emotional Range"]
                            }}
 
-  debugger
   $.ajax({
-    url: API + '/howler',
+    url: API + '/howlers',
     method: "POST",
     data: howlerData
   })

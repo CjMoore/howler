@@ -4,9 +4,9 @@ class Api::V1::HowlersController < ApplicationController
   def create
     @howler = Howler.new(howler_params)
     if @howler.save
-      byebug
       flash[:notice] = 'Howler successfully saved'
-      redirect_to howlers_path
+      # render status: 302
+      render js: "window.location.pathname='#{howlers_path}'"
     else
       #add flash for unsaved stuff
     end
