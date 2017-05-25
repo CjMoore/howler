@@ -2,7 +2,12 @@
     <div class="nav-wrapper baby blue">
       <a href="#" class="brand-logo">Howler</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Login with Twitter</a></li>
+        <li role="presentation" class="active"> <%= link_to "Home", root_path %> </li>
+        <% if current_user %>
+          <li role="presentation" class="active"><%= link_to "Sign Out", logout_path, method: :delete %></a></li>
+        <% else %>
+          <li role="presentation" class="active"><%= link_to "Sign in with Twitter", login_path %></li>
+        <% end %>
       </ul>
     </div>
   </nav>
