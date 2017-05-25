@@ -103,6 +103,10 @@ var printStuff = function(data){
 var postData = function(){
   var input = $("textarea[name=text]").val();
 
+  var saveButton = `<button id='save' class = 'btn'>Save</button>`
+
+  $('#save-btn').append(saveButton)
+
   return $.ajax({
     url: API + '/tones',
     method: "GET",
