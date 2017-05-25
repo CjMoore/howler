@@ -1,14 +1,16 @@
   <nav>
     <div class="nav-wrapper baby blue">
-      <a href="#" class="brand-logo">Howler</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_user %>
+      <div class="container">  
+        <a href="#" class="brand-logo">Howler</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_user %>
           <li role="presentation" class="active"> <%= link_to "Home", root_path %> </li>
           <li role="presentation" class="active"> <%= link_to "My Howlers", howlers_path %> </li>
           <li role="presentation" class="active"><%= link_to "Sign Out", logout_path, method: :delete %></a></li>
-        <% else %>
+          <% else %>
           <li role="presentation" class="active"><%= link_to "Sign in with Twitter", login_path %></li>
-        <% end %>
-      </ul>
-    </div>
+          <% end %>
+        </ul>
+      </div>
+      </div>
   </nav>
