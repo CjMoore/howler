@@ -104,7 +104,7 @@ var postData = function(){
   var input = $("textarea[name=text]").val();
 
   return $.ajax({
-    url: PAPI + '/tones',
+    url: API + '/tones',
     method: "GET",
     data: {text: input}
   })
