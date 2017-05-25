@@ -5,10 +5,10 @@ class Api::V1::HowlersController < ApplicationController
     @howler = current_user.howlers.new(howler_params)
     if @howler.save
       flash[:notice] = 'Howler successfully saved'
-      # render status: 302
       render js: "window.location.pathname='#{howlers_path}'"
     else
-      #add flash for unsaved stuff
+      flash[:error] =  @howler.errors.full_messages.to_sentence
+      render partial: 'shared/flash_error', layout: false
     end
   end
 
