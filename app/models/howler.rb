@@ -1,0 +1,2 @@
+class Howler < ApplicationRecord
+end
