@@ -3,6 +3,7 @@ class Api::V1::HowlersController < ApplicationController
 
   def create
     @howler = Howler.new(howler_params)
+    byebug
     if @howler.save
       flash[:notice] = 'Howler successfully saved'
       # render status: 302
@@ -16,6 +17,7 @@ class Api::V1::HowlersController < ApplicationController
 
   def howler_params
     params.require(:howler).permit(:text,
+                                   :title,
                                    :anger,
                                    :disgust,
                                    :fear,

@@ -123,8 +123,8 @@ var printStuff = function(data){
 }
 
 function saveHowler(data) {
-  // need to add title after JA PR merged
-  var howlerData = {howler: {text: $('#textarea1').val(),
+  var howlerData = {howler: {title: $('#title').val(),
+                             text: $('#textarea1').val(),
                              anger: data[0]["Emotion Tone"]["Anger"],
                              disgust: data[0]["Emotion Tone"]["Disgust"],
                              fear: data[0]["Emotion Tone"]["Fear"],
