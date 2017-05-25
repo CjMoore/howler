@@ -4,6 +4,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_user %>
           <li role="presentation" class="active"> <%= link_to "Home", root_path %> </li>
+          <li role="presentation" class="active"> <%= link_to "My Howlers", howlers_path %> </li>
           <li role="presentation" class="active"><%= link_to "Sign Out", logout_path, method: :delete %></a></li>
         <% else %>
           <li role="presentation" class="active"><%= link_to "Sign in with Twitter", login_path %></li>
