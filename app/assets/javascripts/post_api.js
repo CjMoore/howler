@@ -98,6 +98,14 @@ var printStuff = function(data){
   $("#language-chart-script").add(doLanguageChart)
   $("#emotion-chart-script").add(doEmotionChart)
   $("#social-chart-script").add(doSocialChart)
+
+  $('#save-btn').on('click', function(event) {
+    saveHowler(data)
+  })
+}
+
+function saveHowler(data) {
+  debugger
 }
 
 var postData = function(){
