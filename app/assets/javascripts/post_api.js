@@ -39,6 +39,7 @@ var printStuff = function(data){
   $("#social-data tbody").append("<tr>").append("<td>Agreeableness</td><td>"+ agreeableness +"%</td>")
   $("#social-data tbody").append("<tr>").append("<td>Emotional Range</td><td>"+ emotionalRange +"%</td>")
 
+  $('#data-tables').show()
 
   var doEmotionChart = $(function () {
     var myChart = Highcharts.chart('emotionChartYo', {
@@ -120,6 +121,27 @@ var printStuff = function(data){
   $('#save-btn').on('click', function(event) {
     saveHowler(data)
   })
+
+  $('#clear').on('click', function(event) {
+    clearInput()
+  })
+}
+
+function clearInput(){
+
+  $('#data-tables').hide()
+
+  $('#title').val('')
+  $('#textarea1').val('')
+
+  $("#emotionalData td").remove();
+  $("#languageData td").remove();
+  $("#social-data td").remove();
+
+  $("#emotionChartYo").empty().remove()
+  $("#languageChart").empty().remove()
+  $("#socialChart").empty().remove()
+
 }
 
 function saveHowler(data) {
@@ -154,8 +176,10 @@ var postData = function(){
   var input = $("textarea[name=text]").val();
 
   var saveButton = `<button id='save' class = 'btn'>Save</button>`
+  var clearButton = `<button id='clear' class = 'btn'>Clear</button>`
 
   $('#save-btn').append(saveButton)
+  $('#clear-input').append(clearButton)
 
   return $.ajax({
     url: API + '/tones',
@@ -170,6 +194,7 @@ var postData = function(){
 }
 
 $(document).ready(function(){
+  $('#data-tables').hide()
 
   $("input[type=submit]").on('click', postData)
 
