@@ -6,14 +6,41 @@
       <div class="col s4">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <div class="data" data-openness="<%= howler.openness %>" data-conscientiousness="<%= howler.conscientiousness %>" data-extraversion="<%= howler.extraversion %>" data-agreeableness="<%= howler.agreeableness %>" data-emotional-range="<%= howler.emotional_range %>">
+            <div class="data-<%= howler.id %>" data-id='<%= howler.id %>' data-title='<%= howler.title %>' data-openness="<%= howler.openness %>" data-conscientiousness="<%= howler.conscientiousness %>" data-extraversion="<%= howler.extraversion %>" data-agreeableness="<%= howler.agreeableness %>" data-emotional-range="<%= howler.emotional_range %>">
             <span class="card-title"><%= link_to howler.title %></span>
-              <script id="small-graph"></script>
-              <div id="small-graph">
 
-              <%= javascript_include_tag("/app/assets/javascripts/individual_graphs.js") %>
-                <!-- $(".small-graph").add(doSocialChart) -->
-              </div>
+              <div  id="small-social-chart-<%= howler.id %>" height='100px'></div>
+              <script id="small-graph-<%= howler.id %>"></script>
+              <script type="text/javascript">
+                function makeChart(){
+                  var chartId = $(`.data-${<%= howler.id %>}`).data('id')
+
+                  var doSocialChart = $(function () {
+                    var myOtheOtherrChart = Highcharts.chart(`small-social-chart-${chartId}`, {
+                      chart: {
+                        polar: true
+                      },
+                      title: {
+                        text: 'Social Data'
+                      },
+                      xAxis: {
+                        categories: ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Emotional Range']
+                      },
+
+                      series: [{
+                        type: 'area',
+                        name: 'Tones',
+                        data: [$(`.data-${chartId}`).data("openness"), $(`.data-${chartId}`).data("conscientiousness"), $(`.data-${chartId}`).data("extraversion"),  $(`.data-${chartId}`).data("agreeableness"), $(`.data-${chartId}`).data("emotional-range")]
+                      }],
+
+                    });
+                  });
+
+                  debugger
+                  $(`.small-graph-${chartId}`).add(doSocialChart)
+                }
+                makeChart()
+              </script>
           </div>
           </div>
         </div>
