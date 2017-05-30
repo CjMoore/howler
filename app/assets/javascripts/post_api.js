@@ -166,7 +166,7 @@ function saveHowler(data) {
                            }}
 
   $.ajax({
-    url: PAPI + '/howlers',
+    url: API + '/howlers',
     method: "POST",
     data: howlerData
   })
@@ -203,7 +203,7 @@ var postData = function(){
     $('#save-btn').append(saveButton)
     $('#clear-input').append(clearButton)
     return $.ajax({
-      url: PAPI + '/tones',
+      url: API + '/tones',
       method: "GET",
       data: {text: input}
     })

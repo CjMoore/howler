@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/auth/twitter/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :logout
 
-  resources :howlers, only: [:index]
+  resources :howlers, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

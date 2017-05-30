@@ -1,0 +1,39 @@
+<div class="container">
+  <h1><%= @howler.title %></h1>
+
+  <p><%= @howler.text %></p>
+
+
+  <div class="data" data-anger="<%= @howler.anger %>" data-disgust="<%= @howler.disgust %>"  data-fear="<%= @howler.fear %>" data-conscientiousness="<%= @howler.conscientiousness %>"
+    data-joy="<%= @howler.joy %>" data-sadness="<%= @howler.sadness %>" data-analytical="<%= @howler.analytical %>" data-confident="<%= @howler.confident %>" data-tentative="<%= @howler.tentative %>" data-openness="<%= @howler.openness %>"
+    data-extraversion="<%= @howler.extraversion %>" data-agreeableness="<%= @howler.agreeableness %>" data-emotional-range="<%= @howler.emotional_range %>">
+
+
+  </div>
+
+  <div id="show-emotion-chart">
+
+  </div>
+
+  <div id="show-language-chart">
+
+  </div>
+
+  <div id="show-social-chart">
+
+  </div>
+
+  <script id="show-emotion-chart-script">
+
+  </script>
+
+  <script id="show-language-chart-script">
+
+  </script>
+
+  <script id="show-social-chart-script">
+
+  </script>
+
+  <% javascript_include_tag "/assets/javascripts/howler_show.js" %>
+</div>
