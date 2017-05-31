@@ -9,4 +9,8 @@ class HowlersController < ApplicationController
     flash[:notice] = "You have successfully deleted Howler"
     redirect_to howlers_path
   end
+
+  def show
+    @howler = current_user.howlers.find(params[:id])
+  end
 end
