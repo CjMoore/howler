@@ -25,7 +25,6 @@ function makeCompareChart(){
   var open = function findOpenness(id){
       return $(`.data-${id}`).data("openness")
     }
-    debugger
   var conscientious = function findConscientiousness(id){
       return $(`.data-${id}`).data("conscientiousness")
     }
