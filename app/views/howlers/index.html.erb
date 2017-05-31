@@ -2,38 +2,36 @@
   <h1 class='center'>My Howlers</h1>
   <button type="submit" name="button" id="compare">Compare Selected</button>
   <div class="row">
-  <% @howlers.each do |howler| %>
+    <% @howlers.each do |howler| %>
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content">
+          <div class="data-<%= howler.id %>" data-id='<%= howler.id %>' data-title='<%= howler.title %>' data-openness="<%= howler.openness %>" data-conscientiousness="<%= howler.conscientiousness %>" data-extraversion="<%= howler.extraversion %>" data-agreeableness="<%= howler.agreeableness %>" data-emotional-range="<%= howler.emotional_range %>">
+            <span class="card-title"><%= link_to howler.title, howler_path(howler) %></span>
 
-      <div class="col s6">
-        <div class="card">
-          <div class="card-content">
-            <div class="data-<%= howler.id %>" data-id='<%= howler.id %>' data-title='<%= howler.title %>' data-openness="<%= howler.openness %>" data-conscientiousness="<%= howler.conscientiousness %>" data-extraversion="<%= howler.extraversion %>" data-agreeableness="<%= howler.agreeableness %>" data-emotional-range="<%= howler.emotional_range %>">
-            <span class="card-title"><%= link_to howler.title %></span>
+            <div  id="small-social-chart-<%= howler.id %>" style='height: 300px'></div>
+            <script id="small-graph-<%= howler.id %>"></script>
+            <script type="text/javascript">
+            function makeChart(){
+              var chartId = $(`.data-${<%= howler.id %>}`).data('id')
 
-              <div  id="small-social-chart-<%= howler.id %>" style='height: 300px'></div>
-              <script id="small-graph-<%= howler.id %>"></script>
-              <script type="text/javascript">
-                function makeChart(){
-                  var chartId = $(`.data-${<%= howler.id %>}`).data('id')
-
-                  var doSocialChart = $(function () {
-                    var myOtheOtherrChart = Highcharts.chart(`small-social-chart-${chartId}`, {
-                      chart: {
-                        polar: true
-                      },
-                      title: {
-                        text: 'Social Data'
-                      },
-                      xAxis: {
-                        categories: ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Emotional Range']
-                      },
+              var doSocialChart = $(function () {
+                var myOtheOtherrChart = Highcharts.chart(`small-social-chart-${chartId}`, {
+                  chart: {
+                    polar: true
+                  },
+                  title: {
+                    text: 'Social Data'
+                  },
+                  xAxis: {
+                    categories: ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Emotional Range']
+                  },
 
                       series: [{
                         type: 'area',
                         name: 'Tones',
                         data: [$(`.data-${chartId}`).data("openness"), $(`.data-${chartId}`).data("conscientiousness"), $(`.data-${chartId}`).data("extraversion"),  $(`.data-${chartId}`).data("agreeableness"), $(`.data-${chartId}`).data("emotional-range")]
                       }
-                    // next_series_of_data
                   ],
 
                     });
@@ -49,10 +47,9 @@
             </div>
           </div>
           <%= link_to "Delete Howler", howler, :method => :delete %>
-
-
         </div>
       </div>
-  <% end %>
+    </div>
+    <% end %>
   </div>
 </div>

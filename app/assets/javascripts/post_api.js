@@ -1,5 +1,5 @@
 var API = 'http://localhost:3000/api/v1'
-var PAPI = "https://secret-temple-80815.herokuapp.com/api/v1"
+var PAPI = "https://the-howler.herokuapp.com/api/v1"
 
 var printStuff = function(data){
   $("#emotionalData td").remove();
