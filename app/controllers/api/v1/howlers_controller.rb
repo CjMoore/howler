@@ -14,18 +14,18 @@ class Api::V1::HowlersController < ApplicationController
 
   def update
     howler = current_user.howlers.find(params[:id])
-    new_tone = Tone.get(params[:howler ][:text])
     howler.update(howler_params)
+    howler.update_tones(params[:howler])
     if howler.save
-      new_tone.each do |tone_category|
-        tone_category.values[0].each do |tone, score|
-          if tone.downcase.include?('emotional range')
-            howler.update_attribute(:emotional_range, score)
-          else
-            howler.update_attribute(tone.downcase, score)
-          end
-        end
-      end
+      # new_tone.each do |tone_category|
+      #   tone_category.values[0].each do |tone, score|
+      #     if tone.downcase.include?('emotional range')
+      #       howler.update_attribute(:emotional_range, score)
+      #     else
+      #       howler.update_attribute(tone.downcase, score)
+      #     end
+      #   end
+      # end
       render json: howler
     else
       render howler_path(howler)

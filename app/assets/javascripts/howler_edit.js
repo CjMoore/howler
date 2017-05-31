@@ -2,23 +2,24 @@ var API = 'http://localhost:3000/api/v1'
 var PAPI = "https://the-howler.herokuapp.com/api/v1"
 
 $(document).ready(function(){
-  $('#show-title').on('click', function(event){
-    $('#edit-btn').remove();
-    const titleValue = $(event.target).text();
-    $(event.target).html($('<input />',{'value' : titleValue}).val(titleValue).attr('id', 'titleInput'))
+  $('#edit-da-form').on('click', function(event){
+    $('#edit-da-form').remove();
+    const titleValue = $('#show-title').text();
+    const contentValue = $('#show-content').text();
+    $('#show-title').html($('<input />',{'value' : titleValue}).val(titleValue).attr('id', 'titleInput'))
+    $("#show-content").html($('<input />',{'value' : contentValue}).val(contentValue).attr('id', 'contentInput'))
     editSubmit();
   })
 
-  $('#show-content').on('click', function(event){
-    $('#edit-btn').remove();
-    const contentValue = $(event.target).text();
-    $(event.target).html($('<input />',{'value' : contentValue}).val(contentValue).attr('id', 'contentInput'))
-    editSubmit();
-  })
+  // $('#show-content').on('click', function(event){
+  //   $('#edit-btn').remove();
+  //   $(event.target).html($('<input />',{'value' : titleValue}).val(titleValue).attr('id', 'titleInput'))
+  //   $(event.target).html($('<input />',{'value' : contentValue}).val(contentValue).attr('id', 'contentInput'))
+  //   editSubmit();
+  // })
   $('body').on('click', '#edit-btn', function(event){
     const newTitle = $('#titleInput').val()
     const newContent = $('#contentInput').val()
-
     const updateData = {howler: {title: newTitle, text: newContent}}
 
     if (newTitle =='' && newContent =='') {
@@ -49,6 +50,10 @@ $(document).ready(function(){
 })
 
 function printData(data) {
+  $('#make-form').append("<button id='edit-da-form' class='btn right'>Edit Howler</button>")
+  $('#edit-btn').remove();
+  $('#show-title').empty().text(data.title)
+  $('#show-content').empty().text(data.text)
   let eChart = Highcharts.charts[0]
   let lChart = Highcharts.charts[1]
   let sChart = Highcharts.charts[2]
@@ -76,5 +81,5 @@ function printData(data) {
 }
 
 function editSubmit(){
-  $('#edit').append('<button id="edit-btn" class="btn">Edit Howler</button>')
+  $('#edit').append('<button id="edit-btn" class="btn right">Update Howler</button>')
 }

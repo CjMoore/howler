@@ -1,8 +1,10 @@
 <div class="container">
-  <h1 id="show-title"><%= @howler.title %></h1>
+  <h1 id="show-title" class="center"><%= @howler.title %></h1>
 
-  <p id="show-content"><%= @howler.text %></p>
-
+  <p id="show-content" class="center"><%= @howler.text %></p>
+  <div id="make-form">
+    <button id='edit-da-form' class="btn right">Edit Howler</button>
+  </div>
 <div id="edit">
 
 </div>
@@ -38,5 +40,82 @@
 
   </script>
 
-  <% javascript_include_tag "/assets/javascripts/howler_show.js" %>
+<div class="row">
+
+  <table class='col s4'>
+    <thead>
+      <th>Tone</th>
+      <th>Score</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anger</td>
+        <td><%= number_to_percentage multiplier(@howler.anger) %></td>
+      </tr>
+      <tr>
+        <td>Disgust</td>
+        <td><%= number_to_percentage multiplier(@howler.disgust) %></td>
+      </tr>
+      <tr>
+        <td>Fear</td>
+        <td><%= number_to_percentage multiplier(@howler.fear) %></td>
+      </tr>
+      <tr>
+        <td>Joy</td>
+        <td><%= number_to_percentage multiplier @howler.joy %></td>
+      </tr>
+      <tr>
+        <td>Sadness</td>
+        <td><%= number_to_percentage multiplier @howler.sadness %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class='col s4'>
+    <thead>
+      <th>Tone</th>
+      <th>Score</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Analytical</td>
+        <td><%= number_to_percentage multiplier(@howler.analytical) %></td>
+      </tr>
+      <tr>
+        <td>Confident</td>
+        <td><%= number_to_percentage multiplier @howler.confident %></td>
+      </tr>
+      <td>Tentative</td>
+      <td><%= number_to_percentage multiplier @howler.tentative %></td>
+    </tbody>
+  </table>
+  <table class='col s4'>
+    <thead>
+      <th>Tone</th>
+      <th>Score</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Openness</td>
+        <td><%= number_to_percentage multiplier @howler.openness %></td>
+      </tr>
+      <tr>
+        <td>Conscientiousness</td>
+        <td><%= number_to_percentage multiplier @howler.conscientiousness %></td>
+      </tr>
+      <tr>
+        <td>Extraversion</td>
+        <td><%= number_to_percentage multiplier @howler.extraversion %></td>
+      </tr>
+      <tr>
+        <td>Agreeableness</td>
+        <td><%= number_to_percentage multiplier @howler.agreeableness %></td>
+      </tr>
+      <tr>
+        <td>Emotional Range</td>
+        <td><%= number_to_percentage multiplier @howler.emotional_range %></td>
+      </tr>
+    </tbody>
+
+</div>
+
 </div>

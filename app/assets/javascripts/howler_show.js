@@ -14,7 +14,7 @@ function makeCharts(){
       series: [{
         type: 'area',
         name: 'Tones',
-        data: [$('.data').data('anger'), $('.data').data('disgust'), $('.data').data('fear'), $('.data').data('joy'), $('.data').data('sadness')]
+        data: [parseFloat($('.data').data('anger')), parseFloat($('.data').data('disgust')), parseFloat($('.data').data('fear')), parseFloat($('.data').data('joy')), parseFloat($('.data').data('sadness'))]
       }],
     });
   });
@@ -35,7 +35,7 @@ function makeCharts(){
       series: [{
         type: 'area',
         name: 'Tones',
-        data: [ $('.data').data("analytical"), $('.data').data('confident'), $('.data').data('tentative')]
+        data: [ parseFloat($('.data').data("analytical")), parseFloat($('.data').data('confident')), parseFloat($('.data').data('tentative'))]
       }],
 
     });
@@ -56,7 +56,7 @@ function makeCharts(){
       series: [{
         type: 'area',
         name: 'Tones',
-        data: [$('.data').data('openness'), $('.data').data('conscientiousness'), $('.data').data('extraversion'),  $('.data').data('agreeableness'), $('.data').data('emotional-range')]
+        data: [parseFloat($('.data').data('openness')), parseFloat($('.data').data('conscientiousness')), parseFloat($('.data').data('extraversion')),  parseFloat($('.data').data('agreeableness')), parseFloat($('.data').data('emotional-range'))]
       }],
 
     });
