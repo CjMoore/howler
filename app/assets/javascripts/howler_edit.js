@@ -2,7 +2,7 @@ var API = 'http://localhost:3000/api/v1'
 var PAPI = "https://the-howler.herokuapp.com/api/v1"
 
 $(document).ready(function(){
-  $('#edit-da-form').on('click', function(event){
+  $('body').on('click', '#edit-da-form', function(event){
     $('#edit-da-form').remove();
     const titleValue = $('#show-title').text();
     const contentValue = $('#show-content').text();
@@ -11,12 +11,6 @@ $(document).ready(function(){
     editSubmit();
   })
 
-  // $('#show-content').on('click', function(event){
-  //   $('#edit-btn').remove();
-  //   $(event.target).html($('<input />',{'value' : titleValue}).val(titleValue).attr('id', 'titleInput'))
-  //   $(event.target).html($('<input />',{'value' : contentValue}).val(contentValue).attr('id', 'contentInput'))
-  //   editSubmit();
-  // })
   $('body').on('click', '#edit-btn', function(event){
     const newTitle = $('#titleInput').val()
     const newContent = $('#contentInput').val()
@@ -58,19 +52,46 @@ function printData(data) {
   let lChart = Highcharts.charts[1]
   let sChart = Highcharts.charts[2]
 
-  $('.data').data('anger', data.anger)
-  $('.data').data('disgust', data.disgust)
-  $('.data').data('fear', data.fear)
-  $('.data').data('joy', data.joy)
-  $('.data').data('sadness', data.sadness)
-  $('.data').data('tentative', data.tentative)
-  $('.data').data('confident', data.confident)
-  $('.data').data('analytical', data.analytical)
-  $('.data').data('openness', data.openness)
-  $('.data').data('extraversion', data.extraversion)
-  $('.data').data('conscientiousness', data.conscientiousness)
-  $('.data').data('agreeableness', data.agreeableness)
-  $('.data').data('emotional-range', data.emotional_range)
+  // $('.data').data('anger', data.anger)
+  // $('.data').data('disgust', data.disgust)
+  // $('.data').data('fear', data.fear)
+  // $('.data').data('joy', data.joy)
+  // $('.data').data('sadness', data.sadness)
+  // $('.data').data('tentative', data.tentative)
+  // $('.data').data('confident', data.confident)
+  // $('.data').data('analytical', data.analytical)
+  // $('.data').data('openness', data.openness)
+  // $('.data').data('extraversion', data.extraversion)
+  // $('.data').data('conscientiousness', data.conscientiousness)
+  // $('.data').data('agreeableness', data.agreeableness)
+  // $('.data').data('emotional-range', data.emotional_range)
+  let angerPercent = (data.anger * 100).toFixed(2)
+  let disgustPercent = (data.disgust * 100).toFixed(2)
+  let fearPercent = (data.fear * 100).toFixed(2)
+  let joyPercent = (data.joy * 100).toFixed(2)
+  let sadnessPercent = (data.sadness * 100).toFixed(2)
+  let analyticalPercent = (data.analytical * 100).toFixed(2)
+  let confidentPercent = (data.confident * 100).toFixed(2)
+  let tentativePercent = (data.tentative * 100).toFixed(2)
+  let opennessPercent = (data.openness * 100).toFixed(2)
+  let conscientiousnessPercent = (data.conscientiousness * 100).toFixed(2)
+  let extraversionPercent = (data.extraversion * 100).toFixed(2)
+  let agreeablenessPercent = (data.agreeableness * 100).toFixed(2)
+  let emotionalRangePercent = (data.emotional_range * 100).toFixed(2)
+
+  $('#anger-data').text(`${angerPercent}%`)
+  $('#disgust-data').text(`${disgustPercent}%`)
+  $('#fear-data').text(`${fearPercent}%`)
+  $('#joy-data').text(`${joyPercent}%`)
+  $('#sadness-data').text(`${sadnessPercent}%`)
+  $('#analytical-data').text(`${analyticalPercent}%`)
+  $('#confident-data').text(`${confidentPercent}%`)
+  $('#tentative-data').text(`${tentativePercent}%`)
+  $('#openness-data').text(`${opennessPercent}%`)
+  $('#conscientiousness-data').text(`${conscientiousnessPercent}%`)
+  $('#extraversion-data').text(`${extraversionPercent}%`)
+  $('#agreeableness-data').text(`${agreeablenessPercent}%`)
+  $('#emotional-range-data').text(`${emotionalRangePercent}%`)
 
   let lChartData = [data.analytical, data.confident, data.tentative]
   let sChartData = [data.openness, data.conscientiousness, data.extraversion, data.agreeableness, data.emotional_range]
