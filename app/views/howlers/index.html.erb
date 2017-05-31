@@ -1,6 +1,6 @@
 <div class = 'container'>
   <h1 class='center'>My Howlers</h1>
-
+  <button type="submit" name="button" id="compare">Compare Selected</button>
   <div class="row">
     <% @howlers.each do |howler| %>
     <div class="col s6">
@@ -27,19 +27,26 @@
                     categories: ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Emotional Range']
                   },
 
-                  series: [{
-                    type: 'area',
-                    name: 'Tones',
-                    data: [$(`.data-${chartId}`).data("openness"), $(`.data-${chartId}`).data("conscientiousness"), $(`.data-${chartId}`).data("extraversion"),  $(`.data-${chartId}`).data("agreeableness"), $(`.data-${chartId}`).data("emotional-range")]
-                  }],
+                      series: [{
+                        type: 'area',
+                        name: 'Tones',
+                        data: [$(`.data-${chartId}`).data("openness"), $(`.data-${chartId}`).data("conscientiousness"), $(`.data-${chartId}`).data("extraversion"),  $(`.data-${chartId}`).data("agreeableness"), $(`.data-${chartId}`).data("emotional-range")]
+                      }
+                  ],
 
-                });
-              });
-              $(`.small-graph-${chartId}`).add(doSocialChart)
-            }
-            makeChart()
-            </script>
+                    });
+                  });
+                  $(`.small-graph-${chartId}`).add(doSocialChart)
+                }
+                makeChart()
+              </script>
+              <p>
+                <input class="with-gap" name="group1" type="checkbox" id="<%=howler.id %>" />
+                <label for="<%=howler.id %>">Compare</label>
+              </p>
+            </div>
           </div>
+          <%= link_to "Delete Howler", howler, :method => :delete %>
         </div>
       </div>
     </div>
