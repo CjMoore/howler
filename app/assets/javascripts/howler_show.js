@@ -35,6 +35,7 @@ function makeCharts(){
       series: [{
         type: 'area',
         name: 'Tones',
+
         data: [ parseFloat($('.data').data("analytical")), parseFloat($('.data').data('confident')), parseFloat($('.data').data('tentative'))]
       }],
 
