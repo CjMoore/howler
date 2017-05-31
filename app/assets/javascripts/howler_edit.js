@@ -51,20 +51,7 @@ function printData(data) {
   let eChart = Highcharts.charts[0]
   let lChart = Highcharts.charts[1]
   let sChart = Highcharts.charts[2]
-
-  // $('.data').data('anger', data.anger)
-  // $('.data').data('disgust', data.disgust)
-  // $('.data').data('fear', data.fear)
-  // $('.data').data('joy', data.joy)
-  // $('.data').data('sadness', data.sadness)
-  // $('.data').data('tentative', data.tentative)
-  // $('.data').data('confident', data.confident)
-  // $('.data').data('analytical', data.analytical)
-  // $('.data').data('openness', data.openness)
-  // $('.data').data('extraversion', data.extraversion)
-  // $('.data').data('conscientiousness', data.conscientiousness)
-  // $('.data').data('agreeableness', data.agreeableness)
-  // $('.data').data('emotional-range', data.emotional_range)
+  
   let angerPercent = (data.anger * 100).toFixed(2)
   let disgustPercent = (data.disgust * 100).toFixed(2)
   let fearPercent = (data.fear * 100).toFixed(2)
