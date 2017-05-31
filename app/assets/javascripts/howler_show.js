@@ -14,7 +14,7 @@ function makeCharts(){
       series: [{
         type: 'area',
         name: 'Tones',
-        data: [$('.data').data('anger'), $('.data').data('fear'), $('.data').data('joy'), $('.data').data('sadness'), $('.data').data('disgust')]
+        data: [$('.data').data('anger'), $('.data').data('disgust'), $('.data').data('fear'), $('.data').data('joy'), $('.data').data('sadness')]
       }],
     });
   });
